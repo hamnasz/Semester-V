@@ -1,0 +1,50 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+Code 1.com -- emu8086 assembler version: 4.08  
+ 
+[ 22/11/2025  --  1:36:12 pm ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       org 100h
+[   2]        :                                       
+[   3]    0100: B8 06 00                              MOV AX, 6       ; Load Number to check (6)
+[   4]    0103: B3 02                                 MOV BL, 2       ; Divisor
+[   5]        :                                       
+[   6]    0105: F6 F3                                 DIV BL          ; Divide AX by 2. AL=Quotient, AH=Remainder
+[   7]        :                                       
+[   8]    0107: 80 FC 00                              CMP AH, 0       ; Check if Remainder is 0
+[   9]    010A: 74 09                                 JE  IS_EVEN     ; Jump to EVEN if remainder is 0
+[  10]        :                                       
+[  11]    010C:                                       IS_ODD:
+[  12]    010C: BA 2F 01                              MOV DX, OFFSET MSG_ODD
+[  13]    010F: B4 09                                 MOV AH, 9
+[  14]    0111: CD 21                                 INT 21h
+[  15]    0113: EB 07                                 JMP STOP
+[  16]        :                                       
+[  17]    0115:                                       IS_EVEN:
+[  18]    0115: BA 20 01                              MOV DX, OFFSET MSG_EVEN
+[  19]    0118: B4 09                                 MOV AH, 9
+[  20]    011A: CD 21                                 INT 21h
+[  21]        :                                       
+[  22]    011C:                                       STOP:
+[  23]    011C: B4 4C                                 MOV AH, 4Ch
+[  24]    011E: CD 21                                 INT 21h
+[  25]        :                                       
+[  26]    0120: 4E 75 6D 62 65 72 20 69 73 20 45 56   MSG_EVEN DB 'Number is EVEN$'
+                45 4E 24                            
+[  27]    012F: 4E 75 6D 62 65 72 20 69 73 20 4F 44   MSG_ODD  DB 'Number is ODD$'
+                44 24                               
+[  28]        :                                       
+[  29]    013D: C3                                    RET
+[  30]        :                                       
+ 
+===================================================================================================
+ 
+
+
+
+
+===================================================================================================

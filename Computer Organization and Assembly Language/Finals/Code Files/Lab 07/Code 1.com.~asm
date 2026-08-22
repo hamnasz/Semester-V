@@ -1,0 +1,30 @@
+org 100h
+
+MOV AX, 6       ; Load Number to check (6)
+MOV BL, 2       ; Divisor
+
+DIV BL          ; Divide AX by 2. AL=Quotient, AH=Remainder
+
+CMP AH, 0       ; Check if Remainder is 0
+JE  IS_EVEN     ; Jump to EVEN if remainder is 0
+
+IS_ODD:
+MOV DX, OFFSET MSG_ODD
+MOV AH, 9
+INT 21h
+JMP STOP
+
+IS_EVEN:
+MOV DX, OFFSET MSG_EVEN
+MOV AH, 9
+INT 21h
+
+STOP:
+MOV AH, 4Ch
+INT 21h
+
+MSG_EVEN DB 'Number is EVEN$'
+MSG_ODD  DB 'Number is ODD$'
+
+RET
+

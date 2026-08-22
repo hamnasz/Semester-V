@@ -1,0 +1,39 @@
+org 100h
+
+MOV AL, 5       ; First number
+MOV BL, 3       ; Second number
+
+CMP AL, BL      ; Compare AL and BL
+JG  IS_GREATER  ; Jump if AL > BL
+JL  IS_SMALLER  ; Jump if AL < BL
+JE  IS_EQUAL    ; Jump if AL = BL
+
+IS_GREATER:
+MOV DX, OFFSET MSG_GT
+MOV AH, 9
+INT 21h
+JMP STOP    ; Jump to end
+
+IS_SMALLER:
+MOV DX, OFFSET MSG_LT
+MOV AH, 9
+INT 21h
+JMP STOP
+
+IS_EQUAL:
+MOV DX, OFFSET MSG_EQ
+MOV AH, 9
+INT 21h
+JMP STOP
+
+STOP:
+MOV AH, 4Ch
+INT 21h
+
+; Define Messages
+MSG_GT DB 'AL is Greater$'
+MSG_LT DB 'AL is Smaller$'
+MSG_EQ DB 'Both are Equal$'
+
+RET
+
