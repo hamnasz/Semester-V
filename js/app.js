@@ -19,7 +19,6 @@
     'Computer Organization and Assembly Language',
     'HCI & Computer Graphics',
     'Natural Language Processing',
-    'Others',
     'Probability & Statistics',
     'Programming For AI',
   ];
