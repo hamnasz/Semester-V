@@ -304,7 +304,8 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 1
 .chip:hover { border-color: var(--ink-faint); color: var(--ink); }
 .chip.active { background: var(--ink); border-color: var(--ink); color: var(--paper); }
 
-.chapter-rail { overflow-x: auto; padding: 18px 24px 0; scrollbar-width: thin; }
+.chapter-rail { overflow-x: auto; padding: 18px 24px 0; scrollbar-width: none; -ms-overflow-style: none; }
+.chapter-rail::-webkit-scrollbar { display: none; }
 .chapter-rail-inner { display: flex; gap: 6px; min-width: max-content; }
 .chapter-tab {
   font-family: var(--font-serif); font-weight: 600; font-size: 14.5px;
